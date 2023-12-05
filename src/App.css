@@ -1,0 +1,124 @@
+:root {
+  --glow-color: var(--bittersweet-shimmer);
+  --hunter-green: hsla(132, 29%, 31%, 1);
+  --asparagus: hsla(98, 32%, 45%, 1);
+  --yellow-green: hsla(78, 51%, 56%, 1);
+  --parchment: hsla(43, 57%, 88%, 1);
+  --bittersweet-shimmer: hsla(359, 47%, 51%, 1);
+  --orange-whisky: rgb(189, 142, 71);
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: hsl(135, 9%, 9%);
+  color: var(--parchment);
+  width: 800px; /* max: 800px */
+  height: 600px;
+}
+a {
+  text-decoration: none;
+  color: currentColor;
+}
+.kata.today {
+  border: 3px solid var(--bittersweet-shimmer);
+  animation: glow 2s infinite alternate;
+}
+@keyframes glow {
+  from {
+    box-shadow: 0 0 1px var(--glow-color), 0 0 20px var(--glow-color),
+      0 0 30px var(--glow-color), 0 0 4px var(--glow-color);
+  }
+  to {
+    box-shadow: 0 0 -20px var(--glow-color), 0 0 30px var(--glow-color),
+      0 0 40px var(--glow-color), 0 0 50px var(--glow-color),
+      0 0 60px var(--glow-color);
+  }
+}
+.kata {
+  box-shadow: 3px 2px 20px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 1rem;
+  background-color: var(--hunter-green);
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+.kata:hover:not(.future) {
+  cursor: pointer;
+  background-color: var(--asparagus);
+}
+.day {
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 1rem;
+  padding: 0.2rem 0.8rem;
+
+  background-color: black;
+}
+.future {
+  background-color: gray;
+}
+.easy {
+  color: var(--yellow-green);
+}
+.hard {
+  color: var(--bittersweet-shimmer);
+}
+.medium {
+  color: var(--orange-whisky);
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+  justify-items: center;
+  align-items: center;
+}
+.image-skeleton {
+  width: 200px;
+  height: 200px;
+  background-color: rgb(95, 95, 95); /* color de fondo gris claro */
+  border-radius: 5px; /* bordes redondeados */
+}
+
+.img-advent {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  user-select: none;
+  aspect-ratio: 1 / 1;
+}
+
+@media (min-width: 600px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.snowflake {
+  position: fixed;
+  top: 0;
+  color: #fff;
+  text-shadow: 0 0 10px #00f;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0vh);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
